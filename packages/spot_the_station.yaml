@@ -1,0 +1,28 @@
+sensor:
+  - platform: command_line
+    name: spot_the_station
+    command: 'python3 ./python_scripts/spot_the_next_station.py next'
+    scan_interval: 1440
+    value_template: "{{ value_json | default({}) }}"
+    json_attributes:
+      - "Date"
+      - "Time"
+      - "Duration"
+      - "Maximum Elevation"
+      - "Approach"
+      - "Departure"
+      - "Event Start"
+      - "Event End"
+    unique_id: spot_the_station_sensor
+
+homeassistant:
+  customize:
+    sensor.spot_the_station:
+      friendly_name: NASA Spot the station
+      icon: mdi:space-station
+
+# Clear recorder
+recorder:
+  exclude:
+    entities:
+      - sensor.spot_the_station
