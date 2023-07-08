@@ -16,17 +16,6 @@ homeassistant:
 python_script:
 ```
 
-# Usage
-The Spot the Station integration consists of a sensor that retrieves the upcoming ISS sighting information. The sensor updates automatically once a day ```scan_interval: 1440```.
-
-You can manually trigger an update of the sensor by calling the homeassistant.update_entity service:
-```
-service: homeassistant.update_entity
-data: {}
-target:
-  entity_id: sensor.spot_the_station
-```
-
 # Sensor Attributes
 The sensor provides the following attributes:
 
@@ -41,6 +30,28 @@ Event End: The end time of the ISS sighting.
 
 # Customization
 You can customize the sensor's name and icon in the customize section of your spot_the_station.yaml file.
+
+# Usage
+The Spot the Station integration consists of a sensor that retrieves the upcoming ISS sighting information. The sensor updates automatically once a day ```scan_interval: 1440```.
+
+You can manually trigger an update of the sensor by calling the homeassistant.update_entity service:
+```
+service: homeassistant.update_entity
+data: {}
+target:
+  entity_id: sensor.spot_the_station
+```
+The following could be added as a card to your Home Assistant dashboard to display the sensor data:
+```
+## Potential ISS Sighting - {{ state_attr('sensor.spot_the_station', 'Date') }}
+The ISS will be flying over your-location-here at {{
+state_attr('sensor.spot_the_station', 'Time') }}
+
+__Duration:__ {{ state_attr('sensor.spot_the_station', 'Duration') }}
+__Approach:__ {{ state_attr('sensor.spot_the_station', 'Approach') }}
+__Depart:__ {{ state_attr('sensor.spot_the_station', 'Departure') }}
+__Maximum Elevation:__ {{ state_attr('sensor.spot_the_station', 'Maximum Elevation') }}
+```
 
 Feel free to modify and adapt the code to suit your needs.
 
