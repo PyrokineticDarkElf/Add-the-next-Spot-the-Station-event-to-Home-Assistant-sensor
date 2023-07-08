@@ -41,3 +41,10 @@ Event End: The end time of the ISS sighting.
 
 # Customization
 You can customize the sensor's name and icon in the customize section of your spot_the_station.yaml file.
+
+Feel free to modify and adapt the code to suit your needs.
+
+# Contributing
+Contributions are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request.
+
+Author Staples1010
