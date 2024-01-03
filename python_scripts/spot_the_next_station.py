@@ -36,6 +36,10 @@ def extract_spot_the_station_info():
         # Exclude past events
         if event_start < current_time:
             continue
+            
+        # Workaround to check if STS provided the wrong year in early Jan for Dec dates
+        if event_start.month == 12 and current_time.month == 1:
+            continue
 
         # Calculate end time by adding duration to start time
         duration_str = info_dict.get("Duration", "")
